@@ -1,14 +1,8 @@
 package v.algorithm.sort;
 
-/**
- * @author v
- * 
- *         git clone https://github.com/yang821/practice.git
- * 
- *         git push -u origin master
- * 
- *         yang821@sina.com yangwei+1234
- */
+import v.algorithm.sort.base.ISort;
+import v.algorithm.sort.base.SortUtils;
+
 public class Insert implements ISort {
 	public int[] sort(int[] a) {
 		if (a == null || a.length < 2) {
@@ -31,24 +25,24 @@ public class Insert implements ISort {
 
 	public static void main(String[] args) {
 		System.out.print(SortUtils.judgeSortMethod(new Insert()));
-		test1();
-		test2();
-		test3();
+		// test1();
+		// test2();
+		// test3();
 	}
 
-	private static void test1() {
+	public static void test1() {
 		int[] array = new int[] { 3, 2, 1, 5, 7, 6, 9 };
 		new Insert().sort(array);
 		System.out.println(SortUtils.arrayToString(array));
 	}
 
-	private static void test2() {
+	public static void test2() {
 		int[] array = new int[] { 3 };
 		new Insert().sort(array);
 		System.out.println(SortUtils.arrayToString(array));
 	}
 
-	private static void test3() {
+	public static void test3() {
 		int[] array = new int[] {};
 		new Insert().sort(array);
 		System.out.println(SortUtils.arrayToString(array));

@@ -1,8 +1,19 @@
-package v.algorithm.sort;
+package v.algorithm.sort.base;
 
 import java.util.Arrays;
 import java.util.Random;
 
+import v.algorithm.sort.Insert;
+
+/**
+ * @author v
+ * 
+ *         git clone https://github.com/yang821/practice.git
+ * 
+ *         git push -u origin master
+ * 
+ *         yang821@sina.com yangwei+1234
+ */
 public class SortUtils {
 	public static String arrayToString(int[] array) {
 		return Arrays.toString(array);
@@ -41,11 +52,13 @@ public class SortUtils {
 		String stringSorted = Arrays.toString(arraySorted);
 		assert (stringSortedByJdk.equals(stringSorted));
 
-		return String.format("JDK cost %d, method cost %d.", end - begin, end1 - begine1);
+		String output = String.format("JDK cost %d, method cost %d.", end - begin, end1 - begine1);
+		System.out.println(output);
+		return output;
 	}
 
 	public static void main(String[] args) {
-		System.out.print(SortUtils.judgeSortMethod(new Insert()));
+		SortUtils.judgeSortMethod(new Insert());
 		test4();
 	}
 
