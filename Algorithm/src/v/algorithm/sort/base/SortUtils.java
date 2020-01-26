@@ -12,6 +12,8 @@ import v.algorithm.sort.Insert;
  * 
  *         git push -u origin master
  * 
+ *         git config --global credential.helper store
+ * 
  *         yang821@sina.com yangwei+1234
  */
 public class SortUtils {
@@ -49,12 +51,31 @@ public class SortUtils {
 		long end1 = System.currentTimeMillis();
 
 		String stringSortedByJdk = Arrays.toString(arraySortedByJdk);
+		int temp1 = stringSortedByJdk.length();
 		String stringSorted = Arrays.toString(arraySorted);
-		assert (stringSortedByJdk.equals(stringSorted));
+		int temp2 = stringSorted.length();
+		// assert (stringSortedByJdk.equals(stringSorted));
+		System.out.println("sort correct: " + stringSortedByJdk.equals(stringSorted));
 
-		String output = String.format("JDK cost %d, method cost %d.", end - begin, end1 - begine1);
+		String output = String.format("JDK cost %d, method cost %d.\n", end - begin, end1 - begine1);
 		System.out.println(output);
 		return output;
+	}
+
+	public static void debugSortMethod(ISort method, int[] array) {
+		System.out.println("ori: " + Arrays.toString(array));
+
+		int[] arraySortedByJdk = sortByJdk(array);
+		String stringSortedByJdk = Arrays.toString(arraySortedByJdk);
+
+		int[] arraySorted = method.sort(array);
+		String stringSorted = Arrays.toString(arraySorted);
+
+		System.out.println("jdk: " + stringSortedByJdk);
+		System.out.println("tar: " + stringSorted);
+
+		// assert (stringSortedByJdk.equals(stringSorted));
+		System.out.println("sort correct: " + stringSortedByJdk.equals(stringSorted) + "\n");
 	}
 
 	public static void main(String[] args) {

@@ -4,7 +4,7 @@ import v.algorithm.sort.base.ISort;
 import v.algorithm.sort.base.SortUtils;
 
 public class Insert implements ISort {
-	public int[] sort(int[] a) {
+	public int[] sort1(int[] a) {
 		if (a == null || a.length < 2) {
 			return a;
 		}
@@ -18,13 +18,13 @@ public class Insert implements ISort {
 				j--;
 			}
 			a[j + 1] = key;
-			// System.out.println(Arrays.toString(a));
 		}
 		return a;
 	}
 
 	public static void main(String[] args) {
-		System.out.print(SortUtils.judgeSortMethod(new Insert()));
+		SortUtils.debugSortMethod(new Insert(), new int[] { 4, 3, 5, 7, 2, 1 });
+		SortUtils.judgeSortMethod(new Insert());
 		// test1();
 		// test2();
 		// test3();
@@ -46,5 +46,22 @@ public class Insert implements ISort {
 		int[] array = new int[] {};
 		new Insert().sort(array);
 		System.out.println(SortUtils.arrayToString(array));
+	}
+
+	public int[] sort(int[] a) {
+		if (a == null || a.length < 2) {
+			return a;
+		}
+
+		for (int i = 1; i < a.length; i++) {
+			int temp = a[i];
+			int j = i - 1;
+			while (j >= 0 && a[j] > temp) {
+				a[j + 1] = a[j];
+				j--;
+			}
+			a[j + 1] = temp;
+		}
+		return a;
 	}
 }
