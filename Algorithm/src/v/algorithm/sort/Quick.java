@@ -1,5 +1,7 @@
 package v.algorithm.sort;
 
+import java.util.ArrayList;
+
 import v.algorithm.sort.base.ISort;
 import v.algorithm.sort.base.SortUtils;
 
@@ -46,11 +48,33 @@ public class Quick implements ISort {
 		return begin;
 	}
 
+	public static int devideFool(int[] a, int begin, int end) {
+		if (begin >= end || begin < 0) {
+			return -1;
+		}
+		int key = a[end];
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		ArrayList<Integer> listBigger = new ArrayList<Integer>();
+		for (int i = begin; i < end; i++) {
+			if (a[i] <= key) {
+				list.add(a[i]);
+			} else {
+				listBigger.add(a[i]);
+			}
+		}
+		int index = list.size();
+		list.add(key);
+		list.addAll(listBigger);
+		int j = begin;
+		for (Integer i : list) {
+			a[j++] = i;
+		}
+		return index + begin;
+	}
+
 	public static void main(String[] args) {
-		int[] array = new int[] { 2, 5, 3, 1, 4, 9, 8, 1, 2 };
-		SortUtils.debugSortMethod(new Quick(), array);
+		SortUtils.debugSortMethod(new Quick(), new int[] { 2, 5, 3, 1, 4, 9, 8, 1, 2 });
 
 		SortUtils.judgeSortMethod(new Quick());
 	}
-
 }
